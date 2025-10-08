@@ -1,0 +1,37 @@
+<div id="container">
+    <h1 class="title">Contacts</h1>
+    <div class="contacts">
+        @for (contacto of contactsService.contacts; track $index) {
+        <app-contact-list-item [contacto]="contacto" [index]="$index" />
+        } @empty {
+        <p>No contacts yet, add one</p>
+            }
+    </div>
+    <div class="add-contact">
+        <a routerLink="/contacts/new"><!-- From Uiverse.io by risabbir --> 
+            <div class="checkbox-container">
+            <div class="checkbox-wrapper">
+                <input class="checkbox" id="checkbox" type="checkbox" />
+                <label class="checkbox-label">
+                <div class="checkbox-flip">
+                    <div class="checkbox-front">
+                    <svg
+                        fill="white"
+                        height="32"
+                        width="32"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                        d="M19 13H12V19H11V13H5V12H11V6H12V12H19V13Z"
+                        class="icon-path"
+                        ></path>
+                    </svg>
+                    </div>
+                </div>
+                </label>
+            </div>
+            </div>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="layout">
+    <header class="top-navbar">
+            <div class="navbar-brand">
+                <h2>Agenda TUP 2025</h2>
+            </div>
+            <div class="navbar-actions">
+                <button class="button2" (click)="showLogoutModal()">Logout</button>
+            </div>  
+    </header>
+    <div class="main-layout">
+        <nav class="sidebar">
+            <ul class="nav-menu">
+                <li class="btn">
+                    <a class="button1" routerLink="/" routerLinkActive="active">Contacts</a>
+                </li>
+                <li class="btn">
+                    <a class="button2" routerLink="/groups" routerLinkActive="active">Groups</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- EL RESULTADO DEL ROUTER -->
+        <main class="content">
+            <router-outlet/>
+        </main>
+    </div>
+</div>
