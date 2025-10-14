@@ -23,7 +23,7 @@ export class LoggedLayout {
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      this.authService.logout;
+      this.authService.logout();
     }
   });
 }}

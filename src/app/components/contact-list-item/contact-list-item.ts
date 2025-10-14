@@ -16,28 +16,18 @@ export class ContactListItem {
 
   contactsService = inject(ContactsService);
 
-  ngOnInit() {
-    console.log('Contacto #' + this.index(), this.contacto());
-    console.log('⭐ Es favorito?', this.contacto().isFavorite);
+  confirmDelete() {
+    Swal.fire({
+      title: `Delete ${this.contacto().firstName}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      confirmButtonColor: "var(--color-error)",
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.contactsService.deleteContact(this.contacto().id);
+      }
+    });
   }
-
-  // showDeleteModal(){
-  //     Swal.fire({
-  //   title: "Are you sure?",
-  //   text: "You won't be able to revert this!",
-  //   icon: "warning",
-  //   showCancelButton: true,
-  //   confirmButtonColor: "#3085d6",
-  //   cancelButtonColor: "#d33",
-  //   confirmButtonText: "Yes, delete it!"
-  // }).then((result) => {
-  //   if (result.isConfirmed) {
-  //     this.contactsService.deleteContact(this.contacto().id).then(res=>.)
-  //     Swal.fire({
-  //       title: "Deleted!",
-  //       text: "Your file has been deleted.",
-  //       icon: "success"
-  //     });
-  //   }
-  // });
-}
+};

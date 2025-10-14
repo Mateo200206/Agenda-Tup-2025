@@ -1,3 +1,58 @@
-p{
-    color: var(--color-text);
+.contact-options {
+  display: flex;              
+  align-items: center;        
+  justify-content: space-between; 
+
+  width: 100%;
+  padding: 15px 20px;
+  background-color: var(--color-second-background);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  color: #e0e0e0;
+}
+
+.contact-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: flex; 
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+.button2, .delete-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.button2 {
+  background-color: #444;
+  color: white;
+  &:hover {
+    background-color: #555;
+  }
+}
+
+.delete-button {
+  background-color: #d33;
+  color: white;
+  &:hover {
+    background-color: #a02222;
+  }
 }

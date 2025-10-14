@@ -58,6 +58,6 @@ export class Auth implements OnInit {
           this.logout()
         }
       }
-    }, 600)
+    }, 600000)
   }
 }

@@ -4,6 +4,7 @@ import { ContactListItem } from '../../components/contact-list-item/contact-list
 import { Auth } from '../../services/auth';
 import { ContactsService } from '../../services/contact-service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-contact-list-page',

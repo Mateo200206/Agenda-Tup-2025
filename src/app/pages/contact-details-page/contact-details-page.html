@@ -1,78 +1,60 @@
 <div id="container">
-  @if (contact) {
-    <div class="contact-card">
-      <!-- Header con imagen y nombre -->
+  @if (isLoading) {
+    <app-spinner />
+  } @else if (error) {
+    <div class="contact-details">
+      <p class="error">{{ error }}</p>
+      <a routerLink="/" class="button2">Back to the list</a>
+    </div>
+  } @else if (contacto) {
+    <div class="contact-details">
+
+      <a routerLink="/" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5"></path>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+
+      @if (contacto.image) {
+        <img [src]="contacto.image" alt="Avatar de {{ contacto.firstName }}" class="contact-avatar">
+      } @else {
+        <div class="contact-noImg">No Image</div>
+      }
+
       <div class="contact-header">
-        @if (contact.image) {
-          <img [src]="contact.image" [alt]="contact.firstName" class="contact-image">
-        } @else {
-          <div class="contact-image-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            </svg>
-          </div>
-        }
+        <h2 class="contact-name">{{ contacto.firstName }} {{ contacto.lastName }}</h2>
         
-        <div class="contact-name">
-          <h1>{{contact.firstName}} {{contact.lastName}}</h1>
-          @if (contact.isFavorite) {
-            <svg class="favorite-star" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="gold">
+        @if (contacto.isFavorite) {
+          <div class="favorite-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
-          }
+          </div>
+        }
         </div>
-        @if (contact.company) {
-          <p class="contact-company">{{contact.company}}</p>
-        }
-      </div>
 
-      <!-- Información de contacto -->
       <div class="contact-info">
-        <h2>Contact Information</h2>
-        
-        @if (contact.number) {
-          <div class="info-item">
-            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <div>
-              <span class="info-label">Phone</span>
-              <a href="tel:{{contact.number}}" class="info-value">{{contact.number}}</a>
-            </div>
-          </div>
-        }
-
-        @if (contact.email) {
-          <div class="info-item">
-            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            <div>
-              <span class="info-label">Email</span>
-              <a href="mailto:{{contact.email}}" class="info-value">{{contact.email}}</a>
-            </div>
-          </div>
-        }
-
-        @if (contact.address) {
-          <div class="info-item">
-            <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            <div>
-              <span class="info-label">Address</span>
-              <p class="info-value">{{contact.address}}</p>
-            </div>
-          </div>
-        }
-      </div> 
-    </div> 
-  } @else {
-    <div class="loading">
-      <p>Loading contact...</p>
+        <div class="info-item">
+          <strong>Cellphone:</strong>
+          <span>{{ contacto.number || 'No especificado' }}</span>
+        </div>
+        <div class="info-item">
+          <strong>Email:</strong>
+          <span>{{ contacto.email || 'No especificado' }}</span>
+        </div>
+        <div class="info-item">
+          <strong>Adress:</strong>
+          <span>{{ contacto.address || 'No especificada' }}</span>
+        </div>
+        <div class="info-item">
+          <strong>Company:</strong>
+          <span>{{ contacto.company || 'No especificada' }}</span>
+        </div>
+      </div>
+      <div class="bottom-actions">
+        <a [routerLink]="['/contacts', contacto.id, 'edit']" class="button2">Editar</a>
+      </div>
     </div>
   }
-</div> 
+</div>

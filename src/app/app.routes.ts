@@ -35,12 +35,12 @@ export const routes: Routes = [
                 component: NewEditContact
             },
             {
-                path:"contacts/:idContacto/edit",
-                component: NewEditContact
-            },
-            {
                 path:"contacts/:id",
                 component: ContactDetailsPage
+            },
+            {
+                path:"contacts/:idContacto/edit",
+                component: NewEditContact
             },
         ]
     },

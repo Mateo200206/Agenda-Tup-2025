@@ -56,16 +56,16 @@ button{
     --color-primary: blue;
     --color-secondary: 4c91f1;
     --color-background: rgb(55, 54, 54);
-	--color-second-background: #171717;
+	  --color-second-background: #171717;
     --color-text: rgb(255, 255, 255);
-	--color-button:  rgb(255, 255, 255);
-	--color-gradient: linear-gradient(43deg, #41d0bf 0%, #4c91f1 46%, #4242e2 100%);
+	  --color-button:  rgb(255, 255, 255);
+	  --color-gradient: linear-gradient(43deg, #41d0bf 0%, #4c91f1 46%, #4242e2 100%);
 
 }
 
 body{
     color: var(--color-text);
-    --font-family:"TASA Explorer",,
+    --font-family:"Montserrat Bold",
 }
 
 .button2 {
@@ -87,4 +87,19 @@ body{
   background-color: var(--color-background);
   color: white;
   transform: translateY(-1px);
+}
+
+.delete-button{
+  padding: 14px;
+  border-radius: 8px;
+  text-align: center;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 250;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  transition: .3s ease-in-out;
 }
