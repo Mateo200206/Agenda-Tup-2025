@@ -21,7 +21,6 @@ export class ContactDetailsPage implements OnInit {
   error: string | null = null;
 
   async ngOnInit() {
-    // Obtener el ID desde la ruta
     const contactId = this.route.snapshot.paramMap.get('id'); 
     
     if (!contactId) {
@@ -34,20 +33,15 @@ export class ContactDetailsPage implements OnInit {
 
     try {
       const data = await this.contactsService.getContactById(contactId);
-      console.log('📥 Datos recibidos:', data);
       
       if (data) {
         this.contacto = data;
       } else {
         this.error = "El contacto no pudo ser encontrado.";
-        console.error('❌ No se encontró el contacto');
       }
     } catch (error) {
-      console.error('❌ Error al cargar contacto:', error);
       this.error = "Error al cargar el contacto.";
     }
-    
     this.isLoading = false;
-    console.log('✅ Contacto final:', this.contacto);
   }
 }

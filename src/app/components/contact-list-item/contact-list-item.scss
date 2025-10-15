@@ -56,3 +56,10 @@
     background-color: #a02222;
   }
 }
+
+.contact-link {
+  text-decoration: none; 
+  color: inherit; 
+  cursor: pointer; 
+  flex-grow: 1; 
+  transition: color 0.2s ease;}

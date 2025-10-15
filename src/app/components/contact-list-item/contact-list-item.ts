@@ -16,17 +16,24 @@ export class ContactListItem {
 
   contactsService = inject(ContactsService);
 
-  confirmDelete() {
+    confirmDelete() {
     Swal.fire({
       title: `Delete ${this.contacto().firstName}?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Delete',
       confirmButtonColor: "var(--color-error)",
-      cancelButtonText: 'Cancel'
+      cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
         this.contactsService.deleteContact(this.contacto().id);
+      }
+      if (result.isConfirmed){
+            Swal.fire({
+            title: "Confirmed",
+            icon: "success",
+            draggable: false
+          });
       }
     });
   }

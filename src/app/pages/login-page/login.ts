@@ -13,8 +13,9 @@ import { LoginData } from '../../interfaces/auth';
 export class LoginPage {
   authService = inject(Auth)
   router = inject(Router)
-
   errorLogin = false;
+  solicitudABackEnCurso = false;
+
 
   async login(loginData: LoginData){
     this.errorLogin = false;
@@ -22,8 +23,12 @@ export class LoginPage {
       this.errorLogin = true;
       return
     }
+    this.solicitudABackEnCurso = true;
+
     const loginResult = await this.authService.login(loginData);
     if(loginResult) this.router.navigate(["/"]);
     this.errorLogin = true;
+
+    this.solicitudABackEnCurso = false;
   }
 }
